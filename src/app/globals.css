@@ -1,0 +1,142 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-newsreader), ui-serif, Georgia, serif;
+  --color-char: #161210;
+  --color-cream: #f4eee4;
+  --color-chili: #c94b2a;
+  --color-nori: #1e3a32;
+  --color-ink: #221c16;
+  --color-muted: #6b5e52;
+  --color-line: color-mix(in srgb, #161210 12%, transparent);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--color-cream);
+  color: var(--color-ink);
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-chili) 25%, white);
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-chili);
+  outline-offset: 3px;
+}
+
+.display {
+  font-family: var(--font-display);
+  letter-spacing: -0.035em;
+  font-weight: 500;
+  line-height: 1.08;
+}
+
+.kicker {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-chili);
+}
+
+.prose-kc {
+  max-width: 42rem;
+}
+
+.prose-kc p + p {
+  margin-top: 1.15em;
+}
+
+.prose-kc h2 {
+  font-family: var(--font-display);
+  font-size: 1.55rem;
+  margin: 2.2em 0 0.6em;
+  letter-spacing: -0.03em;
+}
+
+.prose-kc h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  margin: 1.6em 0 0.45em;
+}
+
+.prose-kc ul,
+.prose-kc ol {
+  margin: 0.9rem 0 1.2rem;
+  padding-left: 1.2rem;
+}
+
+.prose-kc ul {
+  list-style: disc;
+}
+
+.prose-kc ol {
+  list-style: decimal;
+}
+
+.prose-kc li + li {
+  margin-top: 0.4em;
+}
+
+.prose-kc a {
+  color: var(--color-chili);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.prose-kc table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1rem 0 1.5rem;
+  font-size: 0.95rem;
+}
+
+.prose-kc th,
+.prose-kc td {
+  border-bottom: 1px solid var(--color-line);
+  padding: 0.55rem 0.4rem;
+  text-align: left;
+}
+
+.prose-kc strong {
+  color: var(--color-char);
+}
+
+.field {
+  width: 100%;
+  min-height: 48px;
+  border: 0;
+  border-bottom: 1px solid var(--color-line);
+  background: transparent;
+  padding: 0.7rem 0;
+  font-size: 1rem;
+}
+
+.field:focus {
+  outline: none;
+  border-bottom-color: var(--color-chili);
+}
+
+.btn {
+  display: inline-flex;
+  min-height: 48px;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.25rem;
+  background: var(--color-chili);
+  color: #fff8f3;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.btn:hover {
+  background: var(--color-char);
+}
