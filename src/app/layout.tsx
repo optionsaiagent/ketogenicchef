@@ -25,6 +25,9 @@ export const metadata: Metadata = {
   },
   description: site.description,
   authors: [{ name: site.author }],
+  openGraph: {
+    images: [{ url: "/images/kalua-pig-hero.jpg", alt: "Slow-cooker kalua pig with cabbage" }],
+  },
 };
 
 export const viewport: Viewport = {

@@ -22,7 +22,7 @@ export default function RecipesPage() {
             <Link href={`/recipes/${recipe.slug}`} className="group grid gap-4 sm:grid-cols-5">
               <div className="relative aspect-[4/3] overflow-hidden bg-nori sm:col-span-2">
                 <Image
-                  src={recipe.image || "/images/kalua-pig-hero.png"}
+                  src={recipe.image || "/images/kalua-pig-hero.jpg"}
                   alt={recipe.title}
                   fill
                   className="object-cover"

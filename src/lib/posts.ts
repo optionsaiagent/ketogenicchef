@@ -34,7 +34,10 @@ export function getPage(slug: string) {
 }
 
 export function rewriteHtml(html: string) {
-  return html.replace(/href="\/([^"/]+)\/?"/g, (_full, slug: string) => {
+  const withoutWpMedia = html
+    .replace(/<figure[^>]*>[\s\S]*?<img[^>]*(?:wp-content|ketogenicchef\.com)[^>]*>[\s\S]*?<\/figure>/gi, "")
+    .replace(/<img[^>]*(?:wp-content|ketogenicchef\.com)[^>]*>/gi, "");
+  return withoutWpMedia.replace(/href="\/([^"/]+)\/?"/g, (_full, slug: string) => {
     const post = getPost(slug);
     if (post?.kind === "recipe") return `href="/recipes/${slug}"`;
     if (post?.kind === "note") return `href="/notes/${slug}"`;
@@ -50,5 +53,5 @@ export function rewriteHtml(html: string) {
 }
 
 export function recipeImage(post: Post) {
-  return post.image || "/images/kalua-pig-hero.png";
+  return post.image || "/images/kalua-pig-hero.jpg";
 }

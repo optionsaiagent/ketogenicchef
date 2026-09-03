@@ -10,7 +10,7 @@ export default function HomePage() {
     <>
       <section className="relative min-h-[78vh] overflow-hidden bg-char">
         <Image
-          src="/images/kalua-pig-hero.png"
+          src="/images/kalua-pig-hero.jpg"
           alt="Slow-cooker kalua pig with cabbage"
           fill
           priority
@@ -53,11 +53,12 @@ export default function HomePage() {
               <Link href={`/recipes/${recipe.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-nori">
                   <Image
-                    src={recipe.image || "/images/kalua-pig-hero.png"}
+                    src={recipe.image || "/images/kalua-pig-hero.jpg"}
                     alt={recipe.title}
                     fill
                     className="object-cover transition duration-500 group-hover:scale-[1.03]"
                     sizes="(min-width: 1024px) 30vw, 100vw"
+                    priority
                   />
                 </div>
                 <p className="display mt-4 text-2xl text-char group-hover:text-chili">{recipe.title}</p>
@@ -82,11 +83,21 @@ export default function HomePage() {
               Get the plan
             </Link>
           </div>
-          <p className="display text-3xl leading-snug text-cream/90 sm:text-4xl">
-            If a dish needs an ingredient I cannot find at Costco, Foodland, Times, or Don Quijote, I
-            usually do not bother publishing it.
-          </p>
+          <div className="relative aspect-[4/3] overflow-hidden">
+            <Image
+              src="/images/grocery-haul.jpg"
+              alt="Oahu grocery haul: pork shoulder, watercress, ahi, eggs, cabbage"
+              fill
+              className="object-cover"
+              sizes="(min-width: 1024px) 50vw, 100vw"
+              priority
+            />
+          </div>
         </div>
+        <p className="mx-auto max-w-6xl px-5 pb-16 display text-3xl leading-snug text-cream/90 sm:text-4xl">
+          If a dish needs an ingredient I cannot find at Costco, Foodland, Times, or Don Quijote, I
+          usually do not bother publishing it.
+        </p>
       </section>
     </>
   );
