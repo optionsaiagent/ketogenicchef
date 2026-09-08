@@ -52,14 +52,16 @@ export default function HomePage() {
             <li key={recipe.slug}>
               <Link href={`/recipes/${recipe.slug}`} className="group block">
                 <div className="relative aspect-[4/3] overflow-hidden bg-nori">
-                  <Image
-                    src={recipe.image || "/images/kalua-pig-hero.jpg"}
-                    alt={recipe.title}
-                    fill
-                    className="object-cover transition duration-500 group-hover:scale-[1.03]"
-                    sizes="(min-width: 1024px) 30vw, 100vw"
-                    priority
-                  />
+                  {recipe.image ? (
+                    <Image
+                      src={recipe.image}
+                      alt={recipe.title}
+                      fill
+                      className="object-cover transition duration-500 group-hover:scale-[1.03]"
+                      sizes="(min-width: 1024px) 30vw, 100vw"
+                      priority
+                    />
+                  ) : null}
                 </div>
                 <p className="display mt-4 text-2xl text-char group-hover:text-chili">{recipe.title}</p>
                 <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-muted">{recipe.excerpt}</p>

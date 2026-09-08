@@ -16,7 +16,18 @@ export async function generateMetadata({
   const { slug } = await params;
   const recipe = recipes.find((r) => r.slug === slug);
   if (!recipe) return { title: "Not found" };
-  return { title: recipe.title, description: recipe.excerpt };
+  const image = recipeImage(recipe);
+  return {
+    title: recipe.title,
+    description: recipe.excerpt,
+    openGraph: image
+      ? {
+          title: recipe.title,
+          description: recipe.excerpt,
+          images: [{ url: image, alt: recipe.title }],
+        }
+      : { title: recipe.title, description: recipe.excerpt, images: [] },
+  };
 }
 
 export default async function RecipePage({
@@ -27,11 +38,14 @@ export default async function RecipePage({
   const { slug } = await params;
   const recipe = recipes.find((r) => r.slug === slug);
   if (!recipe) notFound();
+  const image = recipeImage(recipe);
 
   return (
     <article>
       <header className="bg-char text-cream">
-        <div className="mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:grid-cols-2 lg:items-center lg:py-16">
+        <div
+          className={`mx-auto grid max-w-6xl gap-8 px-5 py-12 lg:items-center lg:py-16 ${image ? "lg:grid-cols-2" : ""}`}
+        >
           <div>
             <p className="kicker text-[#f0c9a0]">
               <Link href="/recipes" className="hover:text-cream">
@@ -41,16 +55,18 @@ export default async function RecipePage({
             <h1 className="display mt-4 text-4xl sm:text-5xl">{recipe.title}</h1>
             <p className="mt-5 max-w-xl text-lg leading-relaxed text-cream/80">{recipe.excerpt}</p>
           </div>
-          <div className="relative aspect-[4/3] overflow-hidden">
-            <Image
-              src={recipeImage(recipe)}
-              alt={recipe.title}
-              fill
-              className="object-cover"
-              sizes="(min-width: 1024px) 50vw, 100vw"
-              priority
-            />
-          </div>
+          {image ? (
+            <div className="relative aspect-[4/3] overflow-hidden">
+              <Image
+                src={image}
+                alt={recipe.title}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 50vw, 100vw"
+                priority
+              />
+            </div>
+          ) : null}
         </div>
       </header>
       <div className="mx-auto max-w-6xl px-5 py-12">

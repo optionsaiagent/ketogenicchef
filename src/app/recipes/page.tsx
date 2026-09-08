@@ -21,13 +21,15 @@ export default function RecipesPage() {
           <li key={recipe.slug}>
             <Link href={`/recipes/${recipe.slug}`} className="group grid gap-4 sm:grid-cols-5">
               <div className="relative aspect-[4/3] overflow-hidden bg-nori sm:col-span-2">
-                <Image
-                  src={recipe.image || "/images/kalua-pig-hero.jpg"}
-                  alt={recipe.title}
-                  fill
-                  className="object-cover"
-                  sizes="(min-width: 640px) 20vw, 100vw"
-                />
+                {recipe.image ? (
+                  <Image
+                    src={recipe.image}
+                    alt={recipe.title}
+                    fill
+                    className="object-cover"
+                    sizes="(min-width: 640px) 20vw, 100vw"
+                  />
+                ) : null}
               </div>
               <div className="sm:col-span-3">
                 <p className="display text-2xl text-char group-hover:text-chili">{recipe.title}</p>

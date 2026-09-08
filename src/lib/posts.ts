@@ -53,5 +53,5 @@ export function rewriteHtml(html: string) {
 }
 
 export function recipeImage(post: Post) {
-  return post.image || "/images/kalua-pig-hero.jpg";
+  return post.image.trim();
 }
