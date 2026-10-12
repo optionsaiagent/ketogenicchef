@@ -5,6 +5,7 @@ export type Post = {
   id: number;
   slug: string;
   title: string;
+  seoTitle?: string;
   date: string;
   excerpt: string;
   html: string;
