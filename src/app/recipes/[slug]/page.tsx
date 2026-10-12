@@ -17,16 +17,17 @@ export async function generateMetadata({
   const recipe = recipes.find((r) => r.slug === slug);
   if (!recipe) return { title: "Not found" };
   const image = recipeImage(recipe);
+  const documentTitle = recipe.seoTitle ?? recipe.title;
   return {
-    title: recipe.title,
+    title: documentTitle,
     description: recipe.excerpt,
     openGraph: image
       ? {
-          title: recipe.title,
+          title: documentTitle,
           description: recipe.excerpt,
           images: [{ url: image, alt: recipe.title }],
         }
-      : { title: recipe.title, description: recipe.excerpt, images: [] },
+      : { title: documentTitle, description: recipe.excerpt, images: [] },
   };
 }
 
